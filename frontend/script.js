@@ -1,35 +1,36 @@
 async function getStockData() {
     const symbol = document.getElementById('symbol').value;
-    if (!symbol) {
-        alert('Por favor, insira o símbolo da ação.');
-        return;
-    }
+    const errorMessage = document.getElementById('error-message');
+    const stockInfo = document.getElementById('stock-info');
+    const loading = document.getElementById('loading');
 
-    document.getElementById('loading').style.display = 'block';
-    document.getElementById('stock-info').style.display = 'none';
+    errorMessage.style.display = 'none';  // Esconder o erro no início
+    stockInfo.style.display = 'none';     // Esconder as informações no início
+    loading.style.display = 'block';      // Mostrar o "Carregando"
 
     try {
         const response = await fetch(`http://localhost:3000/api/stock?symbol=${symbol}`);
         const data = await response.json();
-        
-        if (data.length === 0 || response.status !== 200) {
-            alert('Ação não encontrada ou erro na API');
-            document.getElementById('loading').style.display = 'none';
-            return;
+
+        if (!response.ok || !data || data.length === 0 || !data[0]) {
+            throw new Error('Ação não encontrada. Verifique o nome do papel e tente novamente.');
         }
 
-        const stock = data[0];
+        // Preenchendo os dados da ação
+        document.getElementById('stock-name').textContent = data[0].name;
+        document.getElementById('stock-price').textContent = data[0].price;
+        document.getElementById('stock-change').textContent = data[0].changesPercentage;
+        document.getElementById('stock-dayHigh').textContent = data[0].dayHigh;
+        document.getElementById('stock-dayLow').textContent = data[0].dayLow;
 
-        document.getElementById('stock-name').innerText = stock.name;
-        document.getElementById('stock-price').innerText = stock.price.toFixed(2);
-        document.getElementById('stock-change').innerText = stock.changesPercentage.toFixed(2);
-        document.getElementById('stock-dayHigh').innerText = stock.dayHigh.toFixed(2);
-        document.getElementById('stock-dayLow').innerText = stock.dayLow.toFixed(2);
+        // Exibir os dados e esconder o "Carregando"
+        stockInfo.style.display = 'block';
+        loading.style.display = 'none';
 
-        document.getElementById('stock-info').style.display = 'block';
     } catch (error) {
-        alert('Erro ao buscar dados.');
+        // Exibir a mensagem de erro abaixo da caixa de pesquisa
+        errorMessage.textContent = error.message;
+        errorMessage.style.display = 'block';
+        loading.style.display = 'none';
     }
-
-    document.getElementById('loading').style.display = 'none';
 }
