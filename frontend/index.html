@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/styles.css">
+    <script src="/frontend/script.js"></script>
+    <title>Valores de Ações</title>
+</head>
+
+<body>
+    <h1>Dados de Ações</h1>
+
+    <input type="text" id="symbol" placeholder="Digite o símbolo da ação">
+    <button onclick="getStockData()">Buscar</button>
+
+    <p id="loading">Carregando...</p>
+
+    <div id="stock-info" style="display: none;">
+        <h2 id="stock-name"></h2>
+        <div><strong>Preço:</strong> R$ <span id="stock-price"></span></div>
+        <div><strong>Variação:</strong> <span id="stock-change"></span> %</div>
+        <div><strong>Máximo do dia:</strong> R$ <span id="stock-dayHigh"></span></div>
+        <div><strong>Mínimo do dia:</strong> R$ <span id="stock-dayLow"></span></div>
+    </div>
+</body>
+
+</html>
