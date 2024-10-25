@@ -16,9 +16,7 @@
         <div class="content">
             <h1>Informações da Bolsa de Valores</h1>
             <nav>
-                <a href="#home" style="color: white; margin-right: 15px;">Início</a>
-                <a href="#sobre" style="color: white; margin-right: 15px;">Sobre</a>
-                <a href="#contato" style="color: white;">Contato</a>
+                <a href="./calculator.html" style="color: white;">Calculadora</a>
             </nav>
         </div>
     </header>
@@ -27,8 +25,19 @@
     <main>
         <div class="content">
             <h2>Dados de Ações</h2>
-            <input type="text" id="symbol" placeholder="Digite o símbolo da ação">
-            <button onclick="getStockData()">Buscar</button>
+
+            <div class="group">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
+                    <g>
+                        <path
+                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                        </path>
+                    </g>
+                </svg>
+
+                <input id="symbol" class="input" type="text" placeholder="Digite o nome da ação" name="searchbar" />
+                <button onclick="getStockData()">Buscar</button>
+            </div>
 
             <p id="error-message" style="color: red; display: none;"></p>
 

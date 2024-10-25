@@ -4,7 +4,8 @@ body {
     padding: 0;
 }
 
-header, footer {
+header,
+footer {
     background-color: #333;
     color: #fff;
     padding: 10px 0;
@@ -25,7 +26,8 @@ footer {
 }
 
 main {
-    padding: 60px 20px; /* Para evitar sobreposição com o header */
+    padding: 60px 20px;
+    /* Para evitar sobreposição com o header */
 }
 
 .content {
@@ -38,7 +40,8 @@ main {
 }
 
 /* Estilos adicionais para formulário */
-input, button {
+input,
+button {
     margin: 10px;
     padding: 10px;
     font-size: 16px;
@@ -50,4 +53,78 @@ input, button {
     padding: 15px;
     border-radius: 5px;
     background-color: #f9f9f9;
+}
+
+/* Estilo personalizado para o grupo de busca */
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 190px;
+}
+
+.input {
+    font-family: "Montserrat", sans-serif;
+    width: 200px;
+    height: 45px;
+    padding-left: 2.5rem;
+    box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+    border: 0;
+    border-radius: 12px;
+    background-color: #16171d;
+    outline: none;
+    color: #bdbecb;
+    transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    cursor: text;
+    z-index: 0;
+}
+
+.input::placeholder {
+    color: #bdbecb;
+}
+
+.input:hover {
+    box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+}
+
+.input:active {
+    transform: scale(0.95);
+}
+
+.input:focus {
+    box-shadow: 0 0 0 2.5px #2f303d;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    fill: #bdbecb;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+button {
+    background-color: white;
+    color: black;
+    border-radius: 10em;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 1em 2em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0 0 0 0 black;
+}
+
+button:hover {
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 black;
+}
+
+button:active {
+    transform: translateY(2px) translateX(1px);
+    box-shadow: 0 0 0 0 black;
 }
